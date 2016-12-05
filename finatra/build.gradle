@@ -1,0 +1,14 @@
+apply plugin: 'scala'
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+   compile 'org.scala-lang:scala-library:2.12.0'
+}
+
+task run(type: JavaExec, dependsOn: classes) {
+   main = 'FinatraLauncher'
+   classpath sourceSets.main.runtimeClasspath
+   classpath configurations.runtime
+}
