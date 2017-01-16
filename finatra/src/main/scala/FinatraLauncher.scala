@@ -1,6 +1,6 @@
 import com.twitter.finatra.http.HttpServer
 import com.twitter.finatra.http.routing.HttpRouter
-import no.knowit.finatra.ArticlesController
+import no.knowit.articles.ArticlesController
 
 object FinatraLauncher extends FinatraServer
 
