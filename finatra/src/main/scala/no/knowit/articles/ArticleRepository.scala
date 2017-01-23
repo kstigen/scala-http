@@ -4,7 +4,9 @@ import com.google.inject.Singleton
 
 @Singleton
 class ArticleRepository {
-  def all = TestData.articles
+  def search(request: SearchArticlesRequest) = TestData.articles.values
+
+  def all = TestData.articles.values
   def withId(id: Int): Option[Article] = {
     TestData.articles.get(id)
   }

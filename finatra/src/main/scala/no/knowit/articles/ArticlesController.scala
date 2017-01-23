@@ -4,12 +4,16 @@ import com.google.inject.Inject
 import com.twitter.finagle.http.Request
 import com.twitter.finatra.http.Controller
 
-class ArticlesController @Inject()(
-  articleRepository: ArticleRepository)
-  extends Controller {
+class ArticlesController @Inject()(articleRepository: ArticleRepository) extends Controller {
 
-  get("/articles") { getRequest: Request =>
+  get("/articles") { request: Request =>
     articleRepository.all
+  }
+
+  // Default behaviour if the request does not match the expected input is to give a 500 Internal Server Error
+  // Why isn't the default to give a 400 Bad Request?
+  get("/search") { request: SearchArticlesRequest =>
+    articleRepository.search(request)
   }
 
 //  get("/articles/:id") {getRequest: Request =>
@@ -22,14 +26,12 @@ class ArticlesController @Inject()(
     val id = request.getIntParam("id")
     id > 0 match {
       case false => response.badRequest().jsonError("Param id must be (a) digit(s)")
-      case true => {
-        articleRepository.withId(id).getOrElse(response.notFound().jsonError(s"Article with id $id not found"))
-      }
+      case true => articleRepository.withId(id).getOrElse(response.notFound().jsonError(s"Article with id $id not found"))
     }
   }
 
   post("/articles") { postRequest: NewArticle =>
-    postRequest
+    "Hei"
   }
 
 }
