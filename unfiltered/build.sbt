@@ -28,5 +28,7 @@ libraryDependencies ++= Seq(
   "ws.unfiltered" %% "unfiltered-directives" % unfilteredVersion,
   "ws.unfiltered" %% "unfiltered-filter" % unfilteredVersion,
   "ws.unfiltered" %% "unfiltered-jetty" % unfilteredVersion,
-  "ws.unfiltered" %% "unfiltered-specs2" % unfilteredVersion % "test"
+  "ws.unfiltered" %% "unfiltered-json4s" % unfilteredVersion,
+  "ws.unfiltered" %% "unfiltered-specs2" % unfilteredVersion % "test",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0"
 )
